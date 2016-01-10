@@ -47,9 +47,6 @@ namespace Banks
         }
 
 
-        public bool IsDataProvided { get; protected set; } = false;
-
-
         public CurrencyPair USDtoRUB
         {
             get { return this._usd_to_rub; }
@@ -96,7 +93,6 @@ namespace Banks
                 }
             }
 
-            this.IsDataProvided = true;
             this.OnDataRefreshed();
         }
 
@@ -114,7 +110,7 @@ namespace Banks
 
         private void OnDataRefreshed()
         {
-            if (DataRefreshed != null)
+            if (this.DataRefreshed != null)
             {
                 this.DataRefreshed(this, new EventArgs());
             }

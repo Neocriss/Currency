@@ -11,20 +11,22 @@ namespace Currency
     {
         public App()
         {
-            // The root page of your application
-            MainPage = new BanksListPage(); /*new ContentPage
+            string[] bankNames =
             {
-                Content = new StackLayout
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                    Children = {
-                        new Label {
-                            XAlign = TextAlignment.Center,
-                            Text = "Just a test!"
-                        }
-                    }
-                }
-            };*/
+                "Сбербанк России",
+                "Альфа-Банк",
+                "Россельхозбанк",
+                "Газпромбанк",
+                "ВТБ 24",
+                "Банк Москвы",
+                "Промсвязьбанк",
+                "Райффайзенбанк",
+                "Совкомбанк",
+                "ФК Открытие"
+            };
+            
+            // назначаем главную страницу приложению
+            MainPage = new BanksListPage(new BanksListUIManager(bankNames));
         }
 
         protected override void OnStart()
