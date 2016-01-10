@@ -12,7 +12,7 @@ namespace Currency
         public App()
         {
             // The root page of your application
-            MainPage = new ContentPage
+            MainPage = new BanksListPage(); /*new ContentPage
             {
                 Content = new StackLayout
                 {
@@ -20,11 +20,11 @@ namespace Currency
                     Children = {
                         new Label {
                             XAlign = TextAlignment.Center,
-                            Text = "Welcome to Xamarin Forms!"
+                            Text = "Just a test!"
                         }
                     }
                 }
-            };
+            };*/
         }
 
         protected override void OnStart()
