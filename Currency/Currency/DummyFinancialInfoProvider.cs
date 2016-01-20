@@ -56,10 +56,12 @@ namespace Currency
                         maxValue = 73;
                     }
 
-                    decimal delta = random.Next(200);
+                    // симулируем спред (т.е. разницу между bid и ask)
+                    decimal delta = random.Next(300);
 
-                    decimal bid = random.Next(minValue, maxValue);
-                    decimal ask = bid + delta/100;
+                    // вычисляем bid и ask
+                    decimal bid = random.Next(minValue, maxValue) - Math.Round(delta / 300m, 2);
+                    decimal ask = bid + delta / 100m;
 
                     currencyPairs.Add(new CurrencyPair(name, bid, ask));
                 }

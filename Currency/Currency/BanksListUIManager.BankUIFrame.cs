@@ -15,9 +15,9 @@ namespace Currency
         {
             #region :: ~ Internal objects ~ ::
 
-            private readonly Label usdAskLabel = null;
-            private readonly Label askDeltaLabel = null;
-            private decimal _askDelta = 0m;
+            private readonly Label usdrubBidLabel = null;
+            private readonly Label deltaBidLabel = null;
+            private decimal _deltaBid = 0m;
             public event EventHandler DataInitialized;
 
             #endregion :: ^ Internal objects ^ ::
@@ -35,14 +35,14 @@ namespace Currency
                 this.Bank.DataRefreshed += Bank_DataRefreshed;
 
                 // определяем отображение курса доллара банка
-                this.usdAskLabel = new Label
+                this.usdrubBidLabel = new Label
                 {
                     Text = "... ..",
                     VerticalOptions = LayoutOptions.CenterAndExpand
                 };
 
                 // определяем отображение разницы в курсах банка
-                this.askDeltaLabel = new Label
+                this.deltaBidLabel = new Label
                 {
                     Text = "...",
                     FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
@@ -72,8 +72,8 @@ namespace Currency
                             {
                                 Children =
                                 {
-                                    this.usdAskLabel,
-                                    this.askDeltaLabel
+                                    this.usdrubBidLabel,
+                                    this.deltaBidLabel
                                 },
                                 HorizontalOptions = LayoutOptions.End
                             }
@@ -91,15 +91,15 @@ namespace Currency
             public bool IsDataInitialized { get; protected set; } = false;
 
 
-            public decimal AskDelta
+            public decimal DeltaBid
             {
-                get { return this._askDelta; }
+                get { return this._deltaBid; }
                 set
                 {
-                    if (this._askDelta != value)
+                    if (this._deltaBid != value)
                     {
-                        this._askDelta = value;
-                        this.askDeltaLabel.Text = (value == 0m ? "..." : $"({value:F2})");
+                        this._deltaBid = value;
+                        this.deltaBidLabel.Text = (value == 0m ? "..." : $"({value:F2})");
                     }
                 }
             }
@@ -137,7 +137,7 @@ namespace Currency
 
             private void Bank_DataRefreshed(object sender, EventArgs e)
             {
-                this.usdAskLabel.Text = $"{this.Bank.USDtoRUB.Ask:F2} руб./$";
+                this.usdrubBidLabel.Text = $"{this.Bank.USDtoRUB.Bid:F2} руб./$";
 
                 if (this.IsDataInitialized == false)
                 {

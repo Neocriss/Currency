@@ -145,12 +145,12 @@ namespace Currency
         private void OrderByDescendingThenUpdate()
         {
             this.bankUIFrames =
-                            this.bankUIFrames.OrderByDescending(bankUIFrame => bankUIFrame.Bank.USDtoRUB.Ask).ToList();
+                            this.bankUIFrames.OrderByDescending(bankUIFrame => bankUIFrame.Bank.USDtoRUB.Bid).ToList();
 
             this.banksListStack.Children.Clear();
             foreach (BankUIFrame bankUIFrame in this.bankUIFrames)
             {
-                bankUIFrame.AskDelta = bankUIFrame.Bank.USDtoRUB.Ask - this.bankUIFrames[0].Bank.USDtoRUB.Ask;
+                bankUIFrame.DeltaBid = bankUIFrame.Bank.USDtoRUB.Bid - this.bankUIFrames[0].Bank.USDtoRUB.Bid;
                 this.banksListStack.Children.Add(bankUIFrame.Frame);
             }
         }

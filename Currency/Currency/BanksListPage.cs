@@ -158,7 +158,7 @@ namespace Currency
 
             if (decimal.TryParse(this.dollarsToExchangeEntry.Text, out dollarsToExchange) && dollarsToExchange >= 0)
             {
-                decimal result = this.banksListUIManager[0].USDtoRUB.Ask*dollarsToExchange;
+                decimal result = this.banksListUIManager[0].USDtoRUB.Bid*dollarsToExchange;
                 resultLabel.Text = $"Максимальная сумма {result:F2} рублей";
             }
             else
